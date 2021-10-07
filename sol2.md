@@ -168,6 +168,19 @@ As we can see from the results, there are two issues that we need to address:
 
 To solve the issue, we repeat the same steps as before. Don't forget to ensure the file also has permissions set to `400`.
 
+<details>
+  <summary>Open for a hint on how to create the file and assign permissions</summary>
+
+To create the file with the proper permissions run the following command on the terminal:
+
+```shell
+$ sudo touch /etc/ring-game/restraining-bolt.txt
+$ sudo chmod 400 /etc/ring-game/restraining-bolt.txt
+```
+
+</details>
+
+
 To solve the second issue, we need to create the service. The service must meet the following criteria:
 
 * **name:** kotsadm
@@ -180,6 +193,14 @@ To solve the second issue, we need to create the service. The service must meet 
 <details>
   <summary>Hint: Open to see the Service Definition Manifest</summary>
 
+Create a file called `kotsadm.yaml` in your local directory. For example:
+  
+```shell
+ $ vi kotsadm.yaml
+```
+ 
+Once in the file, paste the following content
+   
 ```yaml
 
 apiVersion: v1
@@ -202,6 +223,14 @@ status:
   loadBalancer: {}
 
 ```
+  
+  Save the file, and run the following command to create the service:
+  
+```shell
+$ kubectl apply -f kotsadm.yaml
+```
+    
+  
 </details>
 
 Once you have created the service, refresh the browser a few more times and the Admin Console should come back up. 
