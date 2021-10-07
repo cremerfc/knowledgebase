@@ -132,7 +132,6 @@ spec:
 
 
 
-
 <details>
   <summary>Open to see the Service Definition Manifest</summary>
 
@@ -159,6 +158,5 @@ status:
   loadBalancer: {}
 
 ```
-
 </details>
 
