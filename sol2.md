@@ -142,6 +142,8 @@ spec:
 
 </details>
 
+In the spec above, we have five `collectors` defined. Two capture cluster information, one collects logs from any pod that has the label `app=kubecon-game` and two that `exec` into the first pod it finds with the label `app=file-check-pod` to check for files with specific permissions. We also have three `analyzers` and the results of these will be displayed to the end user. All of the `analyzers` in this spec are using `RegEx` on the output of the `collectors` to determine a pass/fail scenario.
+
 Once the file is created, run the following command from the same terminal:
 
 ```shell
@@ -149,6 +151,11 @@ Once the file is created, run the following command from the same terminal:
 $ kubectl support-bundle support-bundle.yaml
 
 ```
+
+Once you run the support bundle command, you should see this:
+
+
+As you can see you can scroll down to see the other two results:
 
 
 
@@ -180,4 +187,5 @@ status:
 
 ```
 </details>
+
 
