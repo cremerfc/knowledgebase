@@ -1,6 +1,6 @@
 <h1> Solution for Replicated Quest for the Ring </h1>
 
-If you have landed here, you probably are have run into this issue:
+If you have landed here, you probably have run into this issue:
 
 <p align="center"><img src="tile.png" width=450 ></img></p>
 
