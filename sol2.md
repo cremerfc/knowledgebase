@@ -154,12 +154,12 @@ $ kubectl support-bundle support-bundle.yaml
 
 Once you run the support bundle command, you should see this:
 
-<p align="center"><img src="sboutput.png" width=450 ></img></p>
+<p align="center"><img src="sboutput1.png" width=450 ></img></p>
 
 As you can see you can scroll down to see the other two results:
 
-<p align="center"><img src="sboutput1.png" width=450 ></img></p>
 <p align="center"><img src="sboutput2.png" width=450 ></img></p>
+<p align="center"><img src="sboutput3.png" width=450 ></img></p>
 
 As we can see from the results, there are two issues that we need to address:
 
