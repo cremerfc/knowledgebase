@@ -74,7 +74,7 @@ Open you favorite Linux editor and create a `support-bundle.yaml` file with the 
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: ring-game
+  name: collector-sample
 spec:
   collectors:
     - clusterInfo: {}
@@ -82,7 +82,7 @@ spec:
     - logs:
         selector:
           - app=kubecon-game
-        namespace: default
+        namespace: '{{repl Namespace }}'
         limits:
           maxAge: 30d
           maxLines: 10000
@@ -91,42 +91,37 @@ spec:
         collectorName: check-config
         selector:
           - app=file-check-pod
-        namespace: default
+        namespace: '{{repl Namespace}}'
         args:
         - stat
         - -c
         - "%a"
         - /etc/ring-game/config.txt
-    - exec:
-        name: check-restrain
-        collectorName: check-restrain
-        selector:
-          - app=file-check-pod
-        namespace: default
-        args:
-        - stat
-        - -c
-        - "%a"
-        - /etc/ring-game/restraining-bolt.txt    
   analyzers:
     - textAnalyze:
-        checkName: Config Check
-        fileName: check-config/default/*/check-config-*.txt
+        checkName: Config Check Easy
+        fileName: check-config/{{repl Namespace}}/*/check-config-*.txt
         regex: '400'
+        exclude: repl{{ ConfigOptionEquals "game_options" "hard_level"}}
         outcomes:
           - pass:
               message: Found Config File!!!
           - fail:
-              message: Config file not found. Please check this [article](https://github.com/replicatedhq/kotsapps/blob/kc2021-ring-game/kubecon-2021-ring-game/content/solutions/easysolve.md)
+              message: Config file not found. Please check this [article](https://github.com/cremerfc/knowledgebase/blob/main/sol1.md)
     - textAnalyze:
-        checkName: Restrain Check
-        fileName: check-restrain/default/*/check-restrain-*.txt
+        checkName: Config Check Hard
+        fileName: check-config/{{repl Namespace}}/*/check-config-*.txt
         regex: '400'
+        exclude: repl{{ ConfigOptionEquals "game_options" "easy_level"}}
         outcomes:
           - pass:
-              message: Found Restraint File!!!
+              message: Found Config File!!!
           - fail:
-              message: Restrain file not found in /etc/ring-game/restraint-bolt.txt with 400 permissions.
+              message: Config file not found. Please check this [article](https://github.com/cremerfc/knowledgebase/blob/main/sol2.md)
+
+      
+
+
 ```
 
 </details>
