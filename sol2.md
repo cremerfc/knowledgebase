@@ -131,6 +131,15 @@ spec:
 
 </details>
 
+Once the file is created, run the following command from the same terminal:
+
+```shell
+
+$ kubectl support-bundle support-bundle.yaml
+
+```
+
+
 
 
 <details>
