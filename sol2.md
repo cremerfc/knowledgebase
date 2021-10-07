@@ -154,21 +154,37 @@ $ kubectl support-bundle support-bundle.yaml
 
 Once you run the support bundle command, you should see this:
 
+<p align="center"><img src="sboutput.png" width=450 ></img></p>
 
 As you can see you can scroll down to see the other two results:
 
+<p align="center"><img src="sboutput1.png" width=450 ></img></p>
+<p align="center"><img src="sboutput2.png" width=450 ></img></p>
 
+As we can see from the results, there are two issues that we need to address:
+
+* The file `restrain-bolt.txt` is missing from `/etc/ring-game` directory
+* The `kotsadm` service is missing
+
+To solve the issue, we repeat the same steps as before. Don't forget to ensure the file also has permissions set to `400`.
+
+To solve the second issue, we need to create the service. The service must meet the following criteria:
+
+* **name:** kotsadm
+* **type:** ClusterIP
+* **selector:** app: kotsadm
+* **port:** 3000
+* **targetPort:** http
 
 
 <details>
-  <summary>Open to see the Service Definition Manifest</summary>
+  <summary>Hint: Open to see the Service Definition Manifest</summary>
 
 ```yaml
 
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     kots.io/backup: velero
     kots.io/kotsadm: "true"
@@ -188,4 +204,8 @@ status:
 ```
 </details>
 
+Once you have created the service, refresh the browser a few more times and the Admin Console should come back up. 
 
+Lastly, the app itself may take a while to try again so you should probably delete the `kubecon-game-*` pod so a new one is scheduled. 
+
+At this point the App Status should show `Ready`. Click on the `Complete the Quest` button to complete the quest!
