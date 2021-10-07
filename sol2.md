@@ -235,6 +235,38 @@ $ kubectl apply -f kotsadm.yaml
 
 Once you have created the service, refresh the browser a few more times and the Admin Console should come back up. 
 
-Lastly, the app itself may take a while to try again so you should probably delete the `kubecon-game-*` pod so a new one is scheduled. 
+Lastly, the app itself may take a while to try again so you should probably delete the `kubecon-game-*` pod so a new one is scheduled.
+
+<details>
+  <summary>Open for a hint on how to schedule a new Pod</summary>
+
+To get the list of pods, run the following command:
+
+```shell
+$ kubectl get pods
+```
+
+You should see an output similar to this:
+
+```shell
+
+NAME                                  READY   STATUS                  RESTARTS   AGE
+file-check-pod-76c6bc76d-7xk2d        1/1     Running                 0          9m57s
+kotsadm-7d68c66d9-wbx5t               1/1     Running                 0          87m
+kotsadm-postgres-0                    1/1     Running                 0          87m
+kubecon-game-77b49b445-mwfvn          0/1     Init:CrashLoopBackOff   6          9m57s
+kurl-proxy-kotsadm-75cf6dcf54-m74vm   1/1     Running                 0          87m
+
+
+```
+
+The offending pod is the one in the `Init:CrashLoopBackOff` STATUS. To delete the pod, run the following command:
+
+```shell
+
+$ kubectl delete pod kubecon-game-77b49b445-mwfvn
+
+```
+</details>
 
 At this point the App Status should show `Ready`. Click on the `Complete the Quest` button to complete the quest!
