@@ -126,7 +126,8 @@ spec:
           - pass:
               message: Found Restraint File!!!
           - fail:
-              message: Restrain file not found in /etc/ring-game/restraint-bolt.txt with 400 permissions.```
+              message: Restrain file not found in /etc/ring-game/restraint-bolt.txt with 400 permissions.
+```
 
 </details>
 
