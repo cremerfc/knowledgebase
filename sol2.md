@@ -52,5 +52,77 @@ The offending pod is the one in the `Init:CrashLoopBackOff` STATUS. To delete th
 $ kubectl delete pod kubecon-game-77b49b445-mwfvn
 
 ```
+</details>
 
-Once the new pod is up and running, go back to the Admin Console to click on the "Complete the Quest!" button.
+Once the new pod is up and running, go back to the Admin Console to check that the app is now up and running.
+
+Select the `Application` tab to view the Application's Status. Refresh the browser if needed.
+
+If refreshing the page yields a `404` or similar error (page not found), this could mean more issues. But since we can't access the UI, how can we generate a support bundle?
+
+Thankfully, [Troubleshoot](https://troubleshoot.sh) provides both a `pre-flight` and `support-bundle` plugins for `kubectl`. 
+
+
+
+
+<details>
+  <summary>Open to see the Service Definition Manifest</summary>
+
+```yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 3000
+    targetPort: http
+  selector:
+    app: kotsadm
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+```
+
+</details>
+
+
+
+
+<details>
+  <summary>Open to see the Service Definition Manifest</summary>
+
+```yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 3000
+    targetPort: http
+  selector:
+    app: kotsadm
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+```
+
+</details>
+
