@@ -127,7 +127,7 @@ spec:
           - pass:
               message: Found Restraint File!!!
           - fail:
-              message: Restrain file not found in /etc/ring-game/restraint-bolt.txt with 400 permissions.
+              message: Restrain file not found in /etc/ring-game/restraining-bolt.txt with 400 permissions.
     - textAnalyze:
         checkName: Service Check
         fileName: cluster-resources/services/default.json
