@@ -163,7 +163,7 @@ As you can see you can scroll down to see the other two results:
 
 As we can see from the results, there are two issues that we need to address:
 
-* The file `restrain-bolt.txt` is missing from `/etc/ring-game` directory
+* The file `restraining-bolt.txt` is missing from `/etc/ring-game` directory
 * The `kotsadm` service is missing
 
 To solve the issue, we repeat the same steps as before. Don't forget to ensure the file also has permissions set to `400`.
